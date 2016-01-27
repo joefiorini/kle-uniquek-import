@@ -1,0 +1,28 @@
+{
+  "name": "kle-uniquek-import",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/joefiorini/kle-uniquek-import.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/joefiorini/kle-uniquek-import/issues"
+  },
+  "homepage": "https://github.com/joefiorini/kle-uniquek-import#readme",
+  "dependencies": {
+    "commander": "^2.9.0",
+    "node-fetch": "^1.3.3"
+  },
+  "devDependencies": {
+    "babel": "^6.3.26",
+    "babel-preset-es2015": "^6.3.13",
+    "babel-preset-stage-2": "^6.3.13"
+  }
+}
