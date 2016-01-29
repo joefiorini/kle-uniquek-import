@@ -24,14 +24,10 @@ program
 const {gistId, layer, customMappings} = program;
 
 downloadData(gistId)
-  .then(data => {
-    console.log('Keyboard: ', data[0].name)
-    return data;
-  })
   .then(([,...rows]) => deserializeData(rows))
   .then(flatten)
   .then(keys => buildSetKeyCommands(keys, layer, customMappings))
-  .then(result => console.log(result))
+  .then(result => console.log(result.join('\n')))
   .catch(error => {
     console.error(error.message);
     console.error(error.stack);
