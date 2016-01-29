@@ -7,10 +7,11 @@ program
   .version(version)
   .option('-d, --device <device>', 'The file descriptor for the serial port')
   .option('-b, --baud-rate [baudRate]', 'The baud rate for the serial port (defaults to 19200 for animus firmware)', parseInt, 19200)
+  .option('-p, --pause-interval [interval]', 'Time in ms to pause between each write. Turn this up if you are having problems.', 50)
   .parse(process.argv);
 
 
-const {device, baudRate} = program;
+const {device, baudRate, pauseInterval} = program;
 
 new Promise((resolve, reject) => {
   process.stdin.on('readable', () => {
@@ -42,7 +43,7 @@ new Promise((resolve, reject) => {
       const [next, ...remaining] = rest;
 
       console.log('Pausing between commands...');
-      setTimeout(() => runCommand(next, remaining, done), 50);
+      setTimeout(() => runCommand(next, remaining, done), pauseInterval);
     }
 
     console.log(`Connecting to ${device} at ${baudRate}`);
