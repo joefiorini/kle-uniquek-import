@@ -17,16 +17,18 @@ program
   .option('-d, --gist-id [gistId]', 'Data URL')
   .option('-m, --custom-mappings [mappingFile]', 'JSON file containing custom keycode mappings', jsonFile)
   .option('-l, --layer [layer]', 'The layer this layout corresponds to', parseInt, 0)
+  .option('-s, --side <side>', 'The side of the keyboard you are uploading, left or right.')
   .parse(process.argv)
   .action(env => {
   });
 
-const {gistId, layer, customMappings} = program;
+const {gistId, layer, customMappings, side} = program;
 
 downloadData(gistId)
   .then(([,...rows]) => deserializeData(rows))
   .then(flatten)
   .then(keys => buildSetKeyCommands(keys, layer, customMappings))
+  .then(([left, right]) => side === 'right' ? right : left)
   .then(result => console.log(result.join('\n')))
   .catch(error => {
     console.error(error.message);
