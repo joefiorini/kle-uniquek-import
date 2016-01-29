@@ -23,7 +23,6 @@ program
 
 const {gistId, layer, customMappings} = program;
 
-console.log('Downloading');
 downloadData(gistId)
   .then(data => {
     console.log('Keyboard: ', data[0].name)
