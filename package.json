@@ -17,7 +17,10 @@
   },
   "homepage": "https://github.com/joefiorini/kle-uniquek-import#readme",
   "dependencies": {
+    "ascii-codes": "^1.0.0",
     "commander": "^2.9.0",
+    "key-name": "^1.1.3",
+    "lodash": "^4.0.1",
     "mkdirp": "^0.5.1",
     "node-fetch": "^1.3.3"
   },
