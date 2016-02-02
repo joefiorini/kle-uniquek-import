@@ -1,5 +1,6 @@
 import program from 'commander';
 import {SerialPort} from 'serialport';
+import {isEmpty} from 'lodash';
 
 const {version} = require('../package.json');
 
@@ -17,7 +18,8 @@ new Promise((resolve, reject) => {
   process.stdin.on('readable', () => {
     const data = process.stdin.read();
     if (data) {
-      return resolve(data.toString('utf-8').split('\n'));
+      const list = data.toString('utf-8').split('\n');
+      return resolve(list.filter(item => !isEmpty(item)));
     }
     reject('Need to provide commands on stdin');
   });
