@@ -4,11 +4,15 @@ This is a CLI tool for POSIX-compatible clients that takes a layout from <http:/
 
 ## Usage
 
-This assumes you are familiar with creating layouts on <http://keyboard-layout-editor.com>.
+This assumes you are familiar with creating layouts on <http://keyboard-layout-editor.com> (henceforth referred to as KLE).
 
 ### Parsing your layout
 
 #### Finding the gist id
+
+Open your desired layout in KLE. The gist id can be found in the browser's address bar following "/gists/". In the following example, the gist id is highlighted:
+
+
 
 #### Options
 
@@ -22,5 +26,7 @@ This assumes you are familiar with creating layouts on <http://keyboard-layout-e
 
 ## TODO
 
+- [ ] Simple workflow to transpile before publishing
 - [ ] Create separate package for serial uploader and publish on npm
+- [ ] Publish main module to npm
 - [ ] Separate hardware-specific layout logic into modules
