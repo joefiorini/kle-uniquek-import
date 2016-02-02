@@ -56,8 +56,8 @@ new Promise((resolve, reject) => {
           console.log('data received: ', data.toString('utf-8'));
         });
 
-          const [firstCommand,...rest] = commands;
-          runCommand(firstCommand, rest, resolve);
+        const [firstCommand,...rest] = commands;
+        runCommand(firstCommand, rest, resolve);
       });
     })
     .then(() => serialPort.close());
