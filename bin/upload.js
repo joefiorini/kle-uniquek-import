@@ -6,12 +6,12 @@ const {version} = require('../package.json');
 program
   .version(version)
   .option('-d, --device <device>', 'The file descriptor for the serial port')
-  .option('-b, --baud-rate [baudRate]', 'The baud rate for the serial port (defaults to 19200 for animus firmware)', parseInt, 19200)
+  .option('-b, --baudrate [baudRate]', 'The baud rate for the serial port (defaults to 19200 for animus firmware)', parseInt, 19200)
   .option('-p, --pause-interval [interval]', 'Time in ms to pause between each write. Turn this up if you are having problems.', 50)
   .parse(process.argv);
 
 
-const {device, baudRate, pauseInterval} = program;
+const {device, baudrate, pauseInterval} = program;
 
 new Promise((resolve, reject) => {
   process.stdin.on('readable', () => {
@@ -23,7 +23,7 @@ new Promise((resolve, reject) => {
   });
 })
   .then(commands => {
-    const serialPort = new SerialPort(device, {baudRate});
+    const serialPort = new SerialPort(device, {baudrate});
 
     function runCommand(command, rest, done) {
       if (command === undefined) {
@@ -46,7 +46,7 @@ new Promise((resolve, reject) => {
       setTimeout(() => runCommand(next, remaining, done), pauseInterval);
     }
 
-    console.log(`Connecting to ${device} at ${baudRate}`);
+    console.log(`Connecting to ${device} at ${baudrate}`);
 
     return new Promise((resolve, reject) => {
       serialPort.on('open', () => {
